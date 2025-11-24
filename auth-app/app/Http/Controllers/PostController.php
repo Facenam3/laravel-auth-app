@@ -10,4 +10,8 @@ class PostController extends Controller
     public function index() : View {
         return view("posts.posts");
     }
+
+    public function post($id) : View {
+        return view('posts.post',[$id => "id"]);
+    }
 }

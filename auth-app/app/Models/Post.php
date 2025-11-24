@@ -16,4 +16,8 @@ class Post extends Model
         'comment',
         'user_id',
     ];
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }
