@@ -1,7 +1,15 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        @if ($errors->any())
+            <div class="text-red-600">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -14,6 +22,20 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Country -->
+        <div class="mt-4">
+            <x-input-label for="country" :value="__('Country')" />
+            <x-text-input class="px-2 py-4 bg-gray-50" id="country" class="block mt-1 w-full" type="country" name="country" :value="old('country')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('country')" class="mt-2" />
+        </div>
+
+        <!-- Adress -->
+        <div class="mt-4">
+            <x-input-label for="adress" :value="__('Adress')" />
+            <x-text-input id="adress" class="block mt-1 w-full" type="adress" name="adress" :value="old('adress')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('adress')" class="mt-2" />
         </div>
 
         <!-- Password -->
