@@ -12,10 +12,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function() {
-    Route::get('/posts', [PostController::class, 'index'])->name('posts');
-    Route::get("/posts/{id}/post", [PostController::class, 'post'])->name('posts.post');
-});
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get("/posts/{id}/post", [PostController::class, 'post'])->name('posts.post');
+Route::get("/posts/add-post", [PostController::class, 'addPost'])->name("posts.add-post");
+Route::post("/posts/create", [PostController::class, 'create'])->name("posts.create");
+Route::get("/posts/{id}/edit", [PostController::class, 'edit'])->name("posts.edit");
+Route::put("/posts/{id}/update", [PostController::class, 'update'])->name("posts.update");
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
