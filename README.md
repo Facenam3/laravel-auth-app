@@ -9,7 +9,8 @@ Features
 - Tailwind CSS UI components
 - API endpoints
 
-  Tech Stack
+Tech Stack
+
 - Laravel 12
 - PHP 8.4
 - Tailwind CSS
