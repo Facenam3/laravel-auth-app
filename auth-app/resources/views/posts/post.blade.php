@@ -11,9 +11,13 @@
                             @if(Auth::user()->id === $post->user_id) 
                                 <div class="flex justify-between">
                                     <h2 class="font-bold text-xl mb-2">{{ $post->title }}</h2>
-                                    <div class="actions">
+                                    <div class="actions flex">
                                         <a href="{{ route("posts.edit",['id' => $post->id ]) }}" class="text-blue-700 hover:text-blue-900 hover:border-b-2 border-blue-700">Edit</a>
-                                        <a href="" class="text-red-700 hover:text-red-900 hover:border-b-2 border-red-700 ml-3">Delete</a>
+                                        <form action="{{ route("posts.delete", ["id" => $post->id]) }}" method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                            <input type="submit" class="text-red-700 hover:text-red-900 hover:border-b-2 border-red-700 ml-3" value="Delete">
+                                        </form>
                                     </div>                                    
                                 </div>                                
                             @else
