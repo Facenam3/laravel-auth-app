@@ -20,7 +20,7 @@ Tech Stack
 
 Installation & Setup
 
-git clone 
+git clone https://github.com/Facenam3/laravel-auth-app.git
 
 cd project-folder
 
