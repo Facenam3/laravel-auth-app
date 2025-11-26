@@ -16,7 +16,7 @@
                                 <span>{{ $post->user->name }}</span>
                                 <span>{{  $post->created_at  }}</span>
                             </div>
-                            <h2 class="font-bold text-xl mt-5">comments</h2>
+                            <h2 class="font-bold text-xl mt-5 capitalize">comments</h2>
                         </div>
                     </a>
                  @endforeach

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 
 class PostController extends Controller
 {
@@ -16,9 +17,9 @@ class PostController extends Controller
     }
 
     public function post($id) : View {
-         $post = Post::with('user')->findOrFail($id);
-
-        return view('posts.post')->with("post", $post);
+        $post = Post::with('user')->findOrFail($id);
+        $comments = Comment::with(["post", "user"])->get();
+        return view('posts.post', ['post' => $post, 'comments' => $comments]);
     }
 
     public function edit($id) {

@@ -31,7 +31,39 @@
                                 <span>{{ $post->user->name }}</span>
                                 <span>{{  $post->created_at  }}</span>
                             </div>
-                            <h2 class="font-bold text-xl mt-5">comments</h2>
+                            <div>
+                                <h2 class="font-bold text-xl mt-5 capitalize">comments</h2>
+                                  @if($comments)
+                                        @foreach ($comments as $comment)
+                                            <div class="mt-5 bg-slate-100 rounded-md p-2">
+                                                <div class="flex justify-between p-2">
+                                                    <p class="text-gray-800 text-md w-4/5">{{ $comment->comment }}</p>
+                                                    <div class="actions w-1/8">
+                                                        <form action="{{ route("comment.delete", ['id' => $comment->id]) }}" method="POST">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                                            <input type="submit" value="Delete" class=" text-red-600 hover:text-red-800">
+                                                        </form>
+                                                    </div>
+                                                </div>                                                
+                                                <div class="flex justify-between p-2">
+                                                    <h3 class="text-sm text-gray-400">{{ $comment->user->name }}</h3>
+                                                    <p class="text-sm text-gray-400">{{ $comment->created_at }}</p>
+                                                </div>                                                                                 
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                <form action="{{ route("comments.create") }}" method="POST">
+                                    @csrf
+                                    <div class="mt-4 flex flex-col">
+                                        <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
+                                        <input type="hidden" name="post_id" value={{ $post->id }}>
+                                        <textarea name="comment" id="comment" rows="3" class="w-full outline-none border-gray-300 bg-slate-100 rounded-md focus:border-purple-600"></textarea>
+                                        <input type="submit" value="Add Comment" class="mt-3 px-2 py-1 bg-purple-600 text-gray-50 hover:bg-purple-800 hover:text-gray-100 w-1/6 rounded mx-auto">
+                                    </div>
+                                </form>
+                            </div>                            
                         </div>
                     </div>
             </div>
