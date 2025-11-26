@@ -26,16 +26,14 @@
 
         <!-- Country -->
         <div class="mt-4">
-            <x-input-label for="country" :value="__('Country')" />
-            <x-text-input class="px-2 py-4 bg-gray-50" id="country" class="block mt-1 w-full" type="country" name="country" :value="old('country')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('country')" class="mt-2" />
+            <label for="country" class="block mb-2 text-gray-100 text-sm">Country</label>
+            <input type="text" name="country" id="country" class="w-full bg-gray-900 rounded-md focus:border-purple-700 border-slate-700 text-gray-50">
         </div>
 
         <!-- Adress -->
         <div class="mt-4">
-            <x-input-label for="adress" :value="__('Adress')" />
-            <x-text-input id="adress" class="block mt-1 w-full" type="adress" name="adress" :value="old('adress')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('adress')" class="mt-2" />
+            <label for="adress" class="block mb-2 text-gray-100 text-sm">Adress</label>
+            <input type="text" name="adress" id="adress" class="w-full bg-gray-900 rounded-md focus:border-purple-700 border-slate-700 text-gray-50">
         </div>
 
         <!-- Password -->
